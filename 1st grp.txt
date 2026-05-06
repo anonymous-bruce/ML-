@@ -1,0 +1,57 @@
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn import datasets
+
+# -----------------------------------
+# a. CREATION USING PANDAS
+# -----------------------------------
+
+data = {
+    'Name': ['Arun', 'Bala', 'Charan', 'Divya'],
+    'Age': [20, 21, 19, 22],
+    'Marks': [85, 90, 78, 88]
+}
+
+df = pd.DataFrame(data)
+
+print("DATASET CREATED USING PANDAS")
+print(df)
+
+# -----------------------------------
+# b. LOADING CSV DATASET USING PANDAS
+# -----------------------------------
+
+# Save dataframe into CSV file
+df.to_csv("student.csv", index=False)
+
+# Load CSV file
+csv_data = pd.read_csv("student.csv")
+
+print("\nCSV DATASET LOADED")
+print(csv_data)
+
+# -----------------------------------
+# c. LOADING DATASET USING SKLEARN
+# -----------------------------------
+
+iris = datasets.load_iris()
+
+iris_df = pd.DataFrame(iris.data, columns=iris.feature_names)
+
+print("\nIRIS DATASET USING SKLEARN")
+print(iris_df.head())
+
+# -----------------------------------
+# d. PLOTTING GRAPH
+# -----------------------------------
+
+plt.plot(df['Name'], df['Marks'], marker='o')
+
+plt.title("Student Marks")
+plt.xlabel("Student Name")
+plt.ylabel("Marks")
+
+plt.grid(True)
+
+plt.show()
